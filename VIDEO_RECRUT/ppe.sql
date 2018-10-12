@@ -47,4 +47,11 @@ INSERT INTO CANDIDATURE(codeCandidat,cv,lettreMotiv,video,date,IdPersonne,codeEm
   ('d','4');
 
   INSERT INTO POSSEDER(libelle,IdPersonne)
-  ('a','')
+  ('a','3'),
+  ('a','4'),
+  ('a','5'),
+  ('c','3'),
+  ('b','4'),
+  ('d','5'),
+  ('a','5'),
+  ('b','5');
