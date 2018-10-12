@@ -1,139 +1,50 @@
-#------------------------------------------------------------
-#        Script MySQL.
-#------------------------------------------------------------
+INSERT INTO PERSONNE(IdPersonne,nom,prenom,numeroTel,loginPersonne,motDePasse)
+values
+("1","durand","jhon","0606060606","jdurand","jhon"),
+("2","dupont","pat","0616060606","pdupont","pat"),
+("3","dupond","benjamin","0626060606","bdupond","benjamin"),
+("4","dupand","george","0636060606","gdupand","george"),
+("5","dupind","lee","0646060606","ldupind","lee")
+;
 
+INSERT INTO COMPETENCE(libelle)
+values
+('a'),
+('b'),
+('c'),
+('d'),
+('e');
 
-#------------------------------------------------------------
-# Table: PERSONNE
-#------------------------------------------------------------
+INSERT INTO TYPE_DE_CONTRAT(code,libelle)
+values
+('1','cdi'),
+('2','cdd'),
+('3','alternance'),
+('4','stage'),
+('5','internime');
 
-CREATE TABLE PERSONNE(
-        IdPersonne    Varchar (50) NOT NULL ,
-        nom           Varchar (50) NOT NULL ,
-        prenom        Varchar (50) NOT NULL ,
-        numeroTel     Varchar (50) NOT NULL ,
-        loginPersonne Varchar (50) NOT NULL ,
-        motDePasse    Varchar (50) NOT NULL
-	,CONSTRAINT PERSONNE_PK PRIMARY KEY (IdPersonne)
-)ENGINE=InnoDB;
+INSERT INTO EMPLOI(codeEmploi,libelle,description,Idpersonne,code)
+values
+  ('1','rh','azerazgfag','1','1'),
+  ('2','secretaire','azerazgfag','2','1'),
+  ('3','assistant secretaire','azerazgfag','2','4'),
+  ('4','chef de projet','aezr','1','2');
 
+INSERT INTO CANDIDATURE(codeCandidat,cv,lettreMotiv,video,date,IdPersonne,codeEmploi)
+  ('1','','','',2018-10-12,'3','1'),
+  ('2','','','',2018-10-12,'3','2'),
+  ('3','','','',2018-10-12,'4','1'),
+  ('3','','','',2018-10-12,'4','3'),
+  ('3','','','',2018-10-12,'5','4');
 
-#------------------------------------------------------------
-# Table: COMPETENCE
-#------------------------------------------------------------
+  INSERT INTO NECESSITER(libelle,codeEmploi)
+  ('a','1'),
+  ('b','1'),
+  ('c','2'),
+  ('a','3'),
+  ('b','4'),
+  ('a','4'),
+  ('d','4');
 
-CREATE TABLE COMPETENCE(
-        libelle Varchar (50) NOT NULL
-	,CONSTRAINT COMPETENCE_PK PRIMARY KEY (libelle)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: TYPE DE CONTRAT
-#------------------------------------------------------------
-
-CREATE TABLE TYPE_DE_CONTRAT(
-        code    Varchar (50) NOT NULL ,
-        libelle Varchar (50) NOT NULL
-	,CONSTRAINT TYPE_DE_CONTRAT_PK PRIMARY KEY (code)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: CANDIDAT
-#------------------------------------------------------------
-
-CREATE TABLE CANDIDAT(
-        IdPersonne    Varchar (50) NOT NULL ,
-        nom           Varchar (50) NOT NULL ,
-        prenom        Varchar (50) NOT NULL ,
-        numeroTel     Varchar (50) NOT NULL ,
-        loginPersonne Varchar (50) NOT NULL ,
-        motDePasse    Varchar (50) NOT NULL
-	,CONSTRAINT CANDIDAT_PK PRIMARY KEY (IdPersonne)
-
-	,CONSTRAINT CANDIDAT_PERSONNE_FK FOREIGN KEY (IdPersonne) REFERENCES PERSONNE(IdPersonne)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: RH
-#------------------------------------------------------------
-
-CREATE TABLE RH(
-        IdPersonne    Varchar (50) NOT NULL ,
-        nom           Varchar (50) NOT NULL ,
-        prenom        Varchar (50) NOT NULL ,
-        numeroTel     Varchar (50) NOT NULL ,
-        loginPersonne Varchar (50) NOT NULL ,
-        motDePasse    Varchar (50) NOT NULL
-	,CONSTRAINT RH_PK PRIMARY KEY (IdPersonne)
-
-	,CONSTRAINT RH_PERSONNE_FK FOREIGN KEY (IdPersonne) REFERENCES PERSONNE(IdPersonne)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: EMPLOI
-#------------------------------------------------------------
-
-CREATE TABLE EMPLOI(
-        codeEmploi  Varchar (50) NOT NULL ,
-        libelle     Varchar (50) NOT NULL ,
-        description Varchar (500) NOT NULL ,
-        type        Varchar (50) NOT NULL ,
-        IdPersonne  Varchar (50) NOT NULL ,
-        code        Varchar (50) NOT NULL
-	,CONSTRAINT EMPLOI_PK PRIMARY KEY (codeEmploi)
-
-	,CONSTRAINT EMPLOI_RH_FK FOREIGN KEY (IdPersonne) REFERENCES RH(IdPersonne)
-	,CONSTRAINT EMPLOI_TYPE_DE_CONTRAT0_FK FOREIGN KEY (code) REFERENCES TYPE_DE_CONTRAT(code)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: CANDIDATURE
-#------------------------------------------------------------
-
-CREATE TABLE CANDIDATURE(
-        codeCandidat Varchar (50) NOT NULL ,
-        cv           Varchar (100) NOT NULL ,
-        lettreMotiv  Varchar (100) NOT NULL ,
-        video        Varchar (50) NOT NULL ,
-        date         Date NOT NULL ,
-        IdPersonne   Varchar (50) NOT NULL ,
-        codeEmploi   Varchar (50) NOT NULL
-	,CONSTRAINT CANDIDATURE_PK PRIMARY KEY (codeCandidat)
-
-	,CONSTRAINT CANDIDATURE_CANDIDAT_FK FOREIGN KEY (IdPersonne) REFERENCES CANDIDAT(IdPersonne)
-	,CONSTRAINT CANDIDATURE_EMPLOI0_FK FOREIGN KEY (codeEmploi) REFERENCES EMPLOI(codeEmploi)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: NECESSITER
-#------------------------------------------------------------
-
-CREATE TABLE NECESSITER(
-        libelle    Varchar (50) NOT NULL ,
-        codeEmploi Varchar (50) NOT NULL
-	,CONSTRAINT NECESSITER_PK PRIMARY KEY (libelle,codeEmploi)
-
-	,CONSTRAINT NECESSITER_COMPETENCE_FK FOREIGN KEY (libelle) REFERENCES COMPETENCE(libelle)
-	,CONSTRAINT NECESSITER_EMPLOI0_FK FOREIGN KEY (codeEmploi) REFERENCES EMPLOI(codeEmploi)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: POSSEDER
-#------------------------------------------------------------
-
-CREATE TABLE POSSEDER(
-        libelle    Varchar (50) NOT NULL ,
-        IdPersonne Varchar (50) NOT NULL
-	,CONSTRAINT POSSEDER_PK PRIMARY KEY (libelle,IdPersonne)
-
-	,CONSTRAINT POSSEDER_COMPETENCE_FK FOREIGN KEY (libelle) REFERENCES COMPETENCE(libelle)
-	,CONSTRAINT POSSEDER_CANDIDAT0_FK FOREIGN KEY (IdPersonne) REFERENCES CANDIDAT(IdPersonne)
-)ENGINE=InnoDB;
-
+  INSERT INTO POSSEDER(libelle,IdPersonne)
+  ('a','')
