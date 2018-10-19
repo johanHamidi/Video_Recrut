@@ -31,13 +31,15 @@ values
   ('4','chef de projet','aezr','1','2');
 
 INSERT INTO CANDIDATURE(codeCandidat,cv,lettreMotiv,video,date,IdPersonne,codeEmploi)
-  ('1','','','',2018-10-12,'3','1'),
-  ('2','','','',2018-10-12,'3','2'),
-  ('3','','','',2018-10-12,'4','1'),
-  ('3','','','',2018-10-12,'4','3'),
-  ('3','','','',2018-10-12,'5','4');
+values
+  ('1','a','a','a',2018-10-12,'3','1'),
+  ('2','a','a','a',2018-10-12,'3','2'),
+  ('3','a','a','a',2018-10-12,'4','1'),
+  ('3','a','a','a',2018-10-12,'4','3'),
+  ('3','a','a','a',2018-10-12,'5','4');
 
   INSERT INTO NECESSITER(libelle,codeEmploi)
+  values
   ('a','1'),
   ('b','1'),
   ('c','2'),
@@ -47,6 +49,7 @@ INSERT INTO CANDIDATURE(codeCandidat,cv,lettreMotiv,video,date,IdPersonne,codeEm
   ('d','4');
 
   INSERT INTO POSSEDER(libelle,IdPersonne)
+  values
   ('a','3'),
   ('a','4'),
   ('a','5'),
