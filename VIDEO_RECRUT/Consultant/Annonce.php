@@ -5,6 +5,6 @@
     <title></title>
   </head>
   <body>
-    <?php include '../db.inc.php'; ?>
+    <?php include "Annonce.inc.php"; ?>
   </body>
 </html>
