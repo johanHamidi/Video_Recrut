@@ -6,11 +6,8 @@
   </head>
   <body>
 
-
     <?php
     include '../db.inc.php';
-
-
      ?>
 
   </body>

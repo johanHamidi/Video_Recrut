@@ -9,7 +9,7 @@ USE video_recrut;
 #------------------------------------------------------------
 
 CREATE TABLE PERSONNE(
-        IdPersonne    Varchar (50) NOT NULL ,
+        IdPersonne    int (50) NOT NULL auto_increment ,
         nom           Varchar (50) NOT NULL ,
         prenom        Varchar (50) NOT NULL ,
         numeroTel     Varchar (50) NOT NULL ,
@@ -45,7 +45,7 @@ CREATE TABLE TYPE_DE_CONTRAT(
 #------------------------------------------------------------
 
 CREATE TABLE CANDIDAT(
-        IdPersonne    Varchar (50) NOT NULL ,
+        IdPersonne    int (50) NOT NULL ,
         nom           Varchar (50) NOT NULL ,
         prenom        Varchar (50) NOT NULL ,
         numeroTel     Varchar (50) NOT NULL ,
@@ -62,7 +62,7 @@ CREATE TABLE CANDIDAT(
 #------------------------------------------------------------
 
 CREATE TABLE RH(
-        IdPersonne    Varchar (50) NOT NULL ,
+        IdPersonne    int (50) NOT NULL ,
         nom           Varchar (50) NOT NULL ,
         prenom        Varchar (50) NOT NULL ,
         numeroTel     Varchar (50) NOT NULL ,
@@ -83,7 +83,7 @@ CREATE TABLE EMPLOI(
         libelle     Varchar (50) NOT NULL ,
         description Varchar (500) NOT NULL ,
         type        Varchar (50) NOT NULL ,
-        IdPersonne  Varchar (50) NOT NULL ,
+        IdPersonne  int (50) NOT NULL ,
         code        Varchar (50) NOT NULL
 	,CONSTRAINT EMPLOI_PK PRIMARY KEY (codeEmploi)
 
@@ -102,7 +102,7 @@ CREATE TABLE CANDIDATURE(
         lettreMotiv  Varchar (100) NOT NULL ,
         video        Varchar (50) NOT NULL ,
         date         Date NOT NULL ,
-        IdPersonne   Varchar (50) NOT NULL ,
+        IdPersonne   int (50) NOT NULL ,
         codeEmploi   Varchar (50) NOT NULL
 	,CONSTRAINT CANDIDATURE_PK PRIMARY KEY (codeCandidat)
 
@@ -121,7 +121,7 @@ CREATE TABLE NECESSITER(
 	,CONSTRAINT NECESSITER_PK PRIMARY KEY (libelle,codeEmploi)
 
 	,CONSTRAINT NECESSITER_COMPETENCE_FK FOREIGN KEY (libelle) REFERENCES COMPETENCE(libelle)
-	,CONSTRAINT NECESSITER_EMPLOI0_FK FOREIGN KEY (codeEmploi) REFERENCES EMPLOI(codeEmploi)
+	,CONSTRAINT NECESSITER_EMPLOI0_FK FOREIGN KEY (codeEmploi) REFERENCES EMPLOI(code"Emploi)
 )ENGINE=InnoDB;
 
 
@@ -131,7 +131,7 @@ CREATE TABLE NECESSITER(
 
 CREATE TABLE POSSEDER(
         libelle    Varchar (50) NOT NULL ,
-        IdPersonne Varchar (50) NOT NULL
+        IdPersonne int (50) NOT NULL
 	,CONSTRAINT POSSEDER_PK PRIMARY KEY (libelle,IdPersonne)
 
 	,CONSTRAINT POSSEDER_COMPETENCE_FK FOREIGN KEY (libelle) REFERENCES COMPETENCE(libelle)

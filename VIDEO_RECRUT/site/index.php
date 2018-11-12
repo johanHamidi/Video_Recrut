@@ -39,49 +39,51 @@
 
                             <?php
 
-                            $reponse = mysqli_query($link, "SELECT e.libelle, description, t.libelle , n.libelle FROM TYPE_DE_CONTRAT t INNER JOIN EMPLOI e on t.code = e.codeEmploi INNER JOIN Necessiter n on e.codeEmploi = n.codeEmploi ORDER BY e.libelle ");
+                            $reponse = mysqli_query($link,
+                            "SELECT e.libelle, description, t.libelle , n.libelle, e.codeEmploi
+                            FROM TYPE_DE_CONTRAT t
+                            INNER JOIN EMPLOI e on t.code = e.codeEmploi
+                            INNER JOIN Necessiter n on e.codeEmploi = n.codeEmploi
+                            ORDER BY e.codeEmploi ");
                             $value =  mysqli_fetch_row($reponse);
                             $typ = $value[0];
+                            $id= $value[4];
 
                               ?>
 
                             <div class="box">
                               <div class="inner">
-                              <h3><?php echo $value[0];?></h3>
-                              <p><?php echo $value[1];?></p>
-                              <p><?php echo $value[2];?></p>
-                              <p><?php echo $value[3];?></p>
+                                <h3><?php echo $value[0];?></h3>
+                                <p><?php echo $value[1];?></p>
+                                <p><?php echo $value[2];?></p>
+                                <p><?php echo $value[3];?></p>
 
 
-                                <!-- <img src="images/pic01.jpg" alt="" /></a> -->
-                                <?php     while ( $value =  mysqli_fetch_row($reponse)) {?>
+                                <?php while ( $value =  mysqli_fetch_row($reponse)) {?>
 
 
                                   <?php if ($typ != $value[0]) {
-                                    $typ = $value[0];?>
+                                    $typ = $value[0];
+                                    $id= $value[4];?>
 
                                     </div>
-                                    <a href="" class="button style2 fit" >Postuler</a>
-                                    </div>
-                                    <div class="box">
+                                    <a href="postuler.php?id=<?php echo $id; ?>" class="button style2 fit" data-poptrox="web 400x100" >Postuler</a>
+                                  </div>
+                                  <div class="box">
                                     <div class="inner">
-                                    <h3><?php echo $value[0];?></h3>
-                                    <p><?php echo $value[1];?></p>
-                                    <p><?php echo $value[2];?></p>
+                                      <h3><?php echo $value[0];?></h3>
+                                      <p><?php echo $value[1];?></p>
+                                      <p><?php echo $value[2];?></p>
 
 
-                                <?php  } ?>
-                                  <p><?php echo $value[3];?></p>
-                                 <?php  } ?>
+                                    <?php  } ?>
+                                    <p><?php echo $value[3];?></p>
+                                  <?php  } ?>
 
 
-                               </div>
-                               <a href="" class="button style2 fit" >Postuler</a>
-                               </div>
-
-
-
-
+                                    </div>
+                                    <a href="postuler.php?id=<?php echo $value[4]; ?>" class="button style2 fit" >Postuler</a>
+                                  </div>
 
                         </div>
 
