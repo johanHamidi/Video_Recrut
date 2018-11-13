@@ -14,10 +14,8 @@ $success = mysqli_real_connect(
    $db,
    $port
 );
+mysqli_set_charset($link,"utf8");
 if(!$success){
   echo "erreur";
-}
-else {
-  echo "ok";
 }
 ?>
