@@ -16,8 +16,8 @@
 
 
 
-                            $query = "INSERT INTO PERSONNE(nom, Prenom, numeroTel, loginPersonne, motDePasse)
-                            VALUES ('$nom','$Prenom','$numeroTel','$loginPersonne','$motDePasse')";
+                  $query = "INSERT INTO PERSONNE(nom, Prenom, numeroTel, loginPersonne, motDePasse)
+                  VALUES ('$nom','$Prenom','$numeroTel','$loginPersonne','$motDePasse')";
                   $res = mysqli_query($link,$query);
                   $req = "INSERT INTO CANDIDAT(nom, Prenom, numeroTel, loginPersonne, motDePasse)
                   VALUES ('$nom','$Prenom','$numeroTel','$loginPersonne','$motDePasse')";
