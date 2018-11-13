@@ -45,7 +45,11 @@ CREATE TABLE TYPE_DE_CONTRAT(
 #------------------------------------------------------------
 
 CREATE TABLE CANDIDAT(
+<<<<<<< HEAD
         IdPersonne    int (50) NOT NULL auto_increment ,
+=======
+        IdPersonne    int (50) NOT NULL ,
+>>>>>>> d92eedff0bfe2e8ddffb87f2467302e76c7f35e2
         nom           Varchar (50) NOT NULL ,
         prenom        Varchar (50) NOT NULL ,
         numeroTel     Varchar (50) NOT NULL ,
@@ -62,7 +66,11 @@ CREATE TABLE CANDIDAT(
 #------------------------------------------------------------
 
 CREATE TABLE RH(
+<<<<<<< HEAD
         IdPersonne    int (50) NOT NULL auto_increment ,
+=======
+        IdPersonne    int (50) NOT NULL ,
+>>>>>>> d92eedff0bfe2e8ddffb87f2467302e76c7f35e2
         nom           Varchar (50) NOT NULL ,
         prenom        Varchar (50) NOT NULL ,
         numeroTel     Varchar (50) NOT NULL ,
@@ -121,7 +129,7 @@ CREATE TABLE NECESSITER(
 	,CONSTRAINT NECESSITER_PK PRIMARY KEY (libelle,codeEmploi)
 
 	,CONSTRAINT NECESSITER_COMPETENCE_FK FOREIGN KEY (libelle) REFERENCES COMPETENCE(libelle)
-	,CONSTRAINT NECESSITER_EMPLOI0_FK FOREIGN KEY (codeEmploi) REFERENCES EMPLOI(codeEmploi)
+	,CONSTRAINT NECESSITER_EMPLOI0_FK FOREIGN KEY (codeEmploi) REFERENCES EMPLOI(code"Emploi)
 )ENGINE=InnoDB;
 
 
