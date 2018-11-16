@@ -5,26 +5,30 @@
 </head>
 <body>
   <h2>Se connecter</h2>
+  <?php include '../connectBd.inc.php';?>
 
-<form action="/action_page.php">
+
   <div class="imgcontainer">
     <img src="../images/pic07.jpg" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
-    <label for="uname"><b>Login :</b></label>
-    <input type="text" placeholder="Entrer votre login" name="uname" required> <br></br>
+    <form action="connect.php" method="post">
+      <label for="uname"><b>Login :</b></label>
+      <input type="text" placeholder="Entrer votre login" name="log" required> <br></br>
 
-    <label for="psw"><b>Mot de passe :</b></label>
-    <input type="password" placeholder="Entrer votre mot de passe" name="psw" required> <br></br>
+      <label for="psw"><b>Mot de passe :</b></label>
+      <input type="password" placeholder="Entrer votre mot de passe" name="pas" required> <br></br>
 
-    <button type="submit">Se connecter</button> <br></br>
+      <button type="submit">Se connecter</button> <br></br>
+    </form>
+
   </div>
 
-    <a href="../index.php" class="button">Retour</a>
-    <span class="psw">Mot de passe <a href="#">oublié?</a></span>
+    <a href="../index.php" class="button">Retour</a></br></br>
+    <a href="inscrire.php" class="button">inscription</a>
+
   </div>
-</form>
 
 </body>
 </html>
