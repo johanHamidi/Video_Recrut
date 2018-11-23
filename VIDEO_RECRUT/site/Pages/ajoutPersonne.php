@@ -21,7 +21,7 @@
                   VALUES ('$nom','$Prenom','$numeroTel','$loginPersonne','$motDePasse')";
                   $re = mysqli_query($link,$req);
       if($res){
-        echo "votre compte est bien créé";
+        echo "votre compte est bien creé";
       }else {
         echo "la création a echoué";
       }

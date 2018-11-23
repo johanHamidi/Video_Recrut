@@ -4,28 +4,25 @@
     templated.co @templatedco
     Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
-<?php include 'connectBd.inc.php';?>
+<?php include 'connectBd.inc.php';
+session_start()?>
 <html>
     <head>
         <title>video_recrut</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="../assets/css/main.css" />
     </head>
     <body id="top">
 
 
         <!-- Header -->
 			<header id="header" class="alt">
+        <h3>Bienvenue <?php echo $_SESSION['nom']." ".$_SESSION['prenom'];?> </h3>
 			</header>
 
-		<!-- Nav -->
-			<nav id="menu">
-				<ul1 class="links">
-					<li1><b><a href="Pages/SeConnecter.php">Connexion</a></b></li1>
-					<li1><b><a href="Pages/inscrire.php">S'inscrire</a></b></li1>
-				</ul1>
-			</nav>
+      <br></br><a href="deco.php" class="button">Se deconnecter</a>
+
 
             <!-- Banner -->
             <!--
@@ -37,56 +34,10 @@
                     <div class="inner">
                         <header>
                             <h1>video_recrut</h1>
-                            <p>Consulter ci-dessous la liste d'emplois
+                            <p>Votre espace client</p>
                         </header>
                     </div>
                 </section>
-
-            <!-- Main -->
-                <div id="main">
-                    <div class="inner">
-
-                    <!-- Boxes -->
-                        <div class="thumbnails">
-
-                            <?php
-                            $reponse = mysqli_query($link, "SELECT libelle FROM emploi ");
-                            $value =  mysqli_fetch_row($reponse);
-                            $typ = $value[0];
-                              ?>
-
-                            <div class="box">
-                              <div class="inner">
-                              <h3><?php echo $value[0];?></h3>
-
-                                <!-- <img src="images/pic01.jpg" alt="" /></a> -->
-                                <?php     while ($value =  mysqli_fetch_row($reponse)) {?>
-
-
-                                  <?php if ($typ != $value[0]) {
-                                    $typ = $value[0];?>
-
-                                    </div>
-                                    <a href="Pages/postuler.php" class="button" >Postuler</a>
-                                    </div>
-                                   <div class="box">
-                                    <div class="inner">
-                                    <h3><?php echo $value[0];?></h3>
-
-
-                                <?php  } ?>
-                                  <p><?php echo $value[3];?></p>
-                                 <?php  } ?>
-
-
-                               </div>
-                               <a href="Pages/postuler.php" class="button">Postuler</a>
-                               </div>
-
-                        </div>
-
-                    </div>
-                </div>
 
             <!-- Footer -->
                 <footer id="footer">

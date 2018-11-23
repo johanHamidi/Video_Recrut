@@ -18,12 +18,12 @@
        <label> Prenom :</label>
        <input type="text" name="prenom" value="" required><br>
        <label> Numéro de téléphone :</label>
-       <input type="tel" name="tel" value="" placeholder="0621203235" maxlength="10" required><br>
+       <input type="tel" name="tel" value="" placeholder="0621203235" required><br>
        <label> Identifiant :</label>
        <input type="text" name="identifiant" value="" required><br>
        <label> Mot de passe :</label>
        <input type="password" name="mdp" value="" required><br>
-      <button type="submit" name="button"> Validé</button>
+      <button type="submit" name="button"> Valider</button>
 
       </form>
   </body>

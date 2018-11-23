@@ -1,13 +1,10 @@
-
 <?php
-// On se connecte à notre
+// On se connecte à notre Bdd
 include '../connectBd.inc.php';
-
 if(isset($_POST) && !empty($_POST['log']) && !empty($_POST['pas'])) {
-
   extract($_POST);
 //   on recupère le password de la table qui correspond au login du visiteur
-  $sql = "SELECT motDePasse FROM PERSONNE WHERE loginPersonne='".$log."'";
+  $sql = "SELECT motDePasse, nom, prenom FROM PERSONNE WHERE loginPersonne='".$log."'";
   $req = mysqli_query($link, $sql) or die('Erreur SQL !br'.$sql.'br'.mysqli_error());
   $data = mysqli_fetch_assoc($req);
   var_dump($data['motDePasse']);
@@ -20,8 +17,9 @@ if(isset($_POST) && !empty($_POST['log']) && !empty($_POST['pas'])) {
   else {
     session_start();
     $_SESSION['loginPersonne'] = $log;
-    header('location: ../index.php');
+    $_SESSION['nom'] = $data['nom'];
+    $_SESSION['prenom'] = $data['prenom'];
+    header('location: espaceClient.php');
   }
 }
-
 ?>
