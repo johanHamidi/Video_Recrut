@@ -55,8 +55,7 @@ session_start();
                     <div class="inner">
                         <header>
                             <h1>video_recrut</h1>
-                            <p>Consulter ci-dessous la liste d'emplois
-
+                            <p><?php echo $tab[3]; ?>
                         </header>
                     </div>
                 </section>
@@ -91,7 +90,7 @@ session_start();
                                     $typ = $value[0];?>
 
                                     </div>
-                                    <a href="" class="button style2 fit" >Postuler</a>
+                                    <a href="" class="button style2 fit" ><?php echo $tab[4] ?></a>
                                     </div>
                                     <div class="box">
                                     <div class="inner">
@@ -106,7 +105,7 @@ session_start();
 
 
                                </div>
-                               <a href="" class="button style2 fit" >Postuler</a>
+                               <a href="" class="button style2 fit" ><?php echo $tab[4]; ?></a>
                                </div>
 
 
@@ -121,8 +120,8 @@ session_start();
             <!-- Footer -->
                 <footer id="footer">
                     <div class="inner">
-                        <h2>CONTACTEZ-NOUS</h2>
-                        <p>061548795  ou   videoRecrut@yep.com </p>
+                        <h2><?php echo $tab[5]; ?></h2>
+                        <p>0615487952  ou   videoRecrut@yep.com </p>
 
                         <ul class="icons">
                             <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
