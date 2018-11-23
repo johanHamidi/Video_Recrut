@@ -4,7 +4,10 @@
     templated.co @templatedco
     Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
-<?php include 'connectBd.inc.php';?>
+<?php include 'connectBd.inc.php';
+
+session_start();
+?>
 <html>
     <head>
         <title>video_recrut</title>
@@ -13,7 +16,19 @@
         <link rel="stylesheet" href="assets/css/main.css" />
     </head>
     <body id="top">
+      <?php
+      $langue = 'francais';
+      if(isset($_GET['langue']))
+        $langue = $_GET['langue'];
+      include 'langue/'.$langue.'.php'; ?>
 
+      <form class="" action="" method="get">
+        <select class="" name="langue">
+          <option value="francais">francais</option>
+          <option value="anglais">anglais</option>
+        </select>
+        <input type="submit" name="" value="validé">
+      </form>
 
         <!-- Header -->
 			<header id="header" class="alt">
@@ -22,10 +37,13 @@
 		<!-- Nav -->
 			<nav id="menu">
 				<ul1 class="links">
-					<li1><b><a href="Pages/SeConnecter.php">Connexion</a></b></li1>
-					<li1><b><a href="Pages/inscrire.php">S'inscrire</a></b></li1>
+					<li1><b><a href="Pages/SeConnecter.php"><?php echo $tab[1]; ?></a></b></li1>
+					<li1><b><a href="Pages/inscrire.php"><?php echo $tab[2]; ?></a></b></li1>
+
 				</ul1>
+
 			</nav>
+
 
             <!-- Banner -->
             <!--
@@ -38,12 +56,14 @@
                         <header>
                             <h1>video_recrut</h1>
                             <p>Consulter ci-dessous la liste d'emplois
+
                         </header>
                     </div>
                 </section>
 
             <!-- Main -->
                 <div id="main">
+
                     <div class="inner">
 
                     <!-- Boxes -->
