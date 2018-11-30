@@ -5,8 +5,7 @@
     Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
 <?php include 'connectBd.inc.php';
-
-session_start();
+include 'Pages/espaceClient.php';
 ?>
 <html>
     <head>
@@ -16,19 +15,7 @@ session_start();
         <link rel="stylesheet" href="assets/css/main.css" />
     </head>
     <body id="top">
-      <?php
-      $langue = 'francais';
-      if(isset($_GET['langue']))
-        $langue = $_GET['langue'];
-      include 'langue/'.$langue.'.php'; ?>
 
-      <form class="" action="" method="get">
-        <select class="" name="langue">
-          <option value="francais">francais</option>
-          <option value="anglais">anglais</option>
-        </select>
-        <input type="submit" name="" value="validé">
-      </form>
 
         <!-- Header -->
 			<header id="header" class="alt">
@@ -37,8 +24,9 @@ session_start();
 		<!-- Nav -->
 			<nav id="menu">
 				<ul1 class="links">
-					<li1><b><a href="Pages/SeConnecter.php"><?php echo $tab[1]; ?></a></b></li1>
-					<li1><b><a href="Pages/inscrire.php"><?php echo $tab[2]; ?></a></b></li1>
+					<li1><b><a href="Pages/SeConnecter.php?langue=<?php echo $langue;?>"><?php echo $tab[1]; ?></a></b></li1>
+					<li1><b><a href="Pages/inscrire.php?langue=<?php echo $langue;?>"><?php echo $tab[2]; ?></a></b></li1>
+          <li1><b><a href="Pages/ajoutEmploi.php?langue=<?php echo $langue;?>"><?php echo $tab[2]; ?></a></b></li1>
 
 				</ul1>
 
@@ -69,7 +57,7 @@ session_start();
                         <div class="thumbnails">
 
                             <?php
-                            $reponse = mysqli_query($link, "SELECT e.libelle, description, t.libelle , n.libelle FROM TYPE_DE_CONTRAT t INNER JOIN EMPLOI e on t.code = e.codeEmploi LEFT OUTER JOIN Necessiter n on e.codeEmploi = n.codeEmploi ORDER BY e.libelle ");
+                            $reponse = mysqli_query($link, "SELECT libelle FROM emploi ");
                             $value =  mysqli_fetch_row($reponse);
                             $typ = $value[0];
                               ?>
@@ -77,26 +65,24 @@ session_start();
                             <div class="box">
                               <div class="inner">
                               <h3><?php echo $value[0];?></h3>
-                              <p><?php echo $value[1];?></p>
-                              <p><?php echo $value[2];?></p>
-                              <p><?php echo $value[3];?></p>
-
 
                                 <!-- <img src="images/pic01.jpg" alt="" /></a> -->
-                                <?php     while ( $value =  mysqli_fetch_row($reponse)) {?>
+                                <?php     while ($value =  mysqli_fetch_row($reponse)) {?>
 
 
                                   <?php if ($typ != $value[0]) {
                                     $typ = $value[0];?>
 
                                     </div>
-                                    <a href="" class="button style2 fit" ><?php echo $tab[4] ?></a>
+
+                                    <a href=""  ></a>
+
+                                    <a href="Pages/postuler.php?langue=<?php echo $langue;?>" class="button" ><?php echo $tab[4]; ?></a>
+
                                     </div>
-                                    <div class="box">
+                                   <div class="box">
                                     <div class="inner">
                                     <h3><?php echo $value[0];?></h3>
-                                    <p><?php echo $value[1];?></p>
-                                    <p><?php echo $value[2];?></p>
 
 
                                 <?php  } ?>
@@ -105,12 +91,11 @@ session_start();
 
 
                                </div>
-                               <a href="" class="button style2 fit" ><?php echo $tab[4]; ?></a>
+
+                               <a href=""  ></a>
+
+                               <a href="Pages/postuler.php?langue=<?php echo $langue;?>" class="button"><?php echo $tab[4]; ?></a>
                                </div>
-
-
-
-
 
                         </div>
 
@@ -135,7 +120,6 @@ session_start();
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery.scrolly.min.js"></script>
-        <script src="assets/js/jquery.poptrox.min.js"></script>
         <script src="assets/js/skel.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>

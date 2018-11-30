@@ -1,4 +1,8 @@
-<?php include '../connectBd.inc.php';?>
+<?php include '../connectBd.inc.php';
+if(isset($_GET['langue']))
+$langue = $_GET['langue'];
+include '../langue/'.$langue.'.php';
+?>
 <html lang="fr" dir="ltr">
   <head>
     <title>Inscription video_recrut</title>
@@ -7,23 +11,23 @@
   </head>
 
   <header>
-      <h2>Inscription video_recrut</h1>
+      <h2><?php echo $tab[11]; ?></h1>
   </header>
 
   <body>
-          <form class="" action="ajoutPersonne.php" method="post">
+          <form class="" action="ajoutPersonne.php?langue=<?php echo $langue;?>" method="post">
 
-       <label> Nom :</label>
+       <label> <?php echo $tab[12]; ?> :</label>
        <input type="text" name="nom" value="" required><br>
-       <label> Prenom :</label>
+       <label> <?php echo $tab[13]; ?> :</label>
        <input type="text" name="prenom" value="" required><br>
-       <label> Numéro de téléphone :</label>
-       <input type="tel" name="tel" value="" placeholder="0621203235" maxlength="10" required><br>
-       <label> Identifiant :</label>
+       <label> <?php echo $tab[14]; ?> :</label>
+       <input type="tel" name="tel" value="" placeholder="0621203235" required><br>
+       <label> <?php echo $tab[7]; ?> :</label>
        <input type="text" name="identifiant" value="" required><br>
-       <label> Mot de passe :</label>
+       <label>  <?php echo $tab[8]; ?>  :</label>
        <input type="password" name="mdp" value="" required><br>
-      <button type="submit" name="button"> Validé</button>
+      <button type="submit" name="button"> <?php echo $tab[15]; ?></button>
 
       </form>
   </body>
