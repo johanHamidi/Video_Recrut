@@ -22,7 +22,9 @@ session_start();
     <label for="">compétence nécessaire</label>
     <input type="text" name="competence" value="">
 
-    <button type="submit" name="validé">validé</button>
+    <button type="submit" name="validé">validé</button></br></br>
+    <a href="../index.php?langue=<?php echo $langue;?>" class="button"><?php echo $tab[9]; ?></a>
+
   </form>
 
 </body>

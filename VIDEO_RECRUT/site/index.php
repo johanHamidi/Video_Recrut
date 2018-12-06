@@ -26,10 +26,19 @@ include 'Pages/espaceClient.php';
 				<ul1 class="links">
 					<li1><b><a href="Pages/SeConnecter.php?langue=<?php echo $langue;?>"><?php echo $tab[1]; ?></a></b></li1>
 					<li1><b><a href="Pages/inscrire.php?langue=<?php echo $langue;?>"><?php echo $tab[2]; ?></a></b></li1>
-          <li1><b><a href="Pages/ajoutEmploi.php?langue=<?php echo $langue;?>"><?php echo $tab[2]; ?></a></b></li1>
+          <?php
+          $idP = $_SESSION['id'];
+          $req_session = mysqli_query($link,"SELECT idPersonne FROM RH WHERE idPersonne ='".$idP."'");
+          $droit = mysqli_fetch_assoc($req_session);
+
+          if($droit['idPersonne'] == $idP && $idP != NULL ){
+          ?>
+              <li1><b><a href="Pages/ajoutEmploi.php?langue=<?php echo $langue;?>"><?php echo $tab[19]; ?></a></b></li1>
+          <?php
+        }
+           ?>
 
 				</ul1>
-
 			</nav>
 
 
@@ -57,7 +66,7 @@ include 'Pages/espaceClient.php';
                         <div class="thumbnails">
 
                             <?php
-                            $reponse = mysqli_query($link, "SELECT libelle FROM emploi ");
+                            $reponse = mysqli_query($link, "SELECT e.libelle,c.libelle FROM emploi e INNER JOIN type_de_contrat c ON e.code = c.code  ");
                             $value =  mysqli_fetch_row($reponse);
                             $typ = $value[0];
                               ?>
@@ -65,6 +74,7 @@ include 'Pages/espaceClient.php';
                             <div class="box">
                               <div class="inner">
                               <h3><?php echo $value[0];?></h3>
+                              <h5><?php echo $value[1]; ?></h5>
 
                                 <!-- <img src="images/pic01.jpg" alt="" /></a> -->
                                 <?php     while ($value =  mysqli_fetch_row($reponse)) {?>
@@ -83,10 +93,11 @@ include 'Pages/espaceClient.php';
                                    <div class="box">
                                     <div class="inner">
                                     <h3><?php echo $value[0];?></h3>
+                                    <h5><?php echo $value[1]; ?></h5>
+
 
 
                                 <?php  } ?>
-                                  <p><?php echo $value[3];?></p>
                                  <?php  } ?>
 
 

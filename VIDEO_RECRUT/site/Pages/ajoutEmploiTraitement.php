@@ -11,13 +11,13 @@ $comp = $_POST['competence'] ;
  $val = mysqli_fetch_assoc($value);
  $code = $val["code"];
  $query = "INSERT INTO emploi(codeEmploi,libelle,description,type,idPersonne,code)
-           VALUES ('5','$libelleEmploi','$desc','a',$id,'$code')";
-           var_dump($query);
+           VALUES ('6','$libelleEmploi','$desc','a',$id,'$code')";
 $res = mysqli_query($link,$query);
 if($res){
   echo "ajout realiser";
+
 }
 else {
-   echo "echec";
-}
- ?>
+   echo "echec vous n'avez pas les droit";
+} ?>
+<br></br><a href="../index.php" class="button">Retour</a>
