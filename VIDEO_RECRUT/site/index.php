@@ -34,6 +34,8 @@ include 'Pages/espaceClient.php';
           if($droit['idPersonne'] == $idP && $idP != NULL ){
           ?>
               <li1><b><a href="Pages/ajoutEmploi.php?langue=<?php echo $langue;?>"><?php echo $tab[19]; ?></a></b></li1>
+              <li1><b><a href="Pages/liste.php?langue=<?php echo $langue;?>"><?php echo $tab[20]; ?></a></b></li1>
+
           <?php
         }
            ?>

@@ -19,6 +19,7 @@ $tab = array(
   '17' => 'Se deconnecter',
   '18' => 'Mauvais identifiant/mot de passe. ré-essayer',
   '19' => 'Ajouter une emploi',
+  '20' => 'liste des candidature',
 
 
 
