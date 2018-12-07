@@ -22,12 +22,12 @@ session_start();
         $langue = $_GET['langue'];
       include 'langue/'.$langue.'.php'; ?>
 
-      <form class="" action="" method="get">
+      <form>
         <select class="" name="langue">
           <option value="francais">francais</option>
           <option value="anglais">anglais</option>
         </select>
-        <input type="submit" name="" value="validé">
+        <button type="submit" name="button">Valider</button>
       </form>
 
         <!-- Header -->
@@ -37,8 +37,9 @@ session_start();
 		<!-- Nav -->
 			<nav id="menu">
 				<ul1 class="links">
-					<li1><b><a href="Pages/SeConnecter.php"><?php echo $tab[1]; ?></a></b></li1>
-					<li1><b><a href="Pages/inscrire.php"><?php echo $tab[2]; ?></a></b></li1>
+          <li1><b><a href="Pages/SeConnecter.php?langue=<?php echo $langue;?>"><?php echo $tab[1]; ?></a></b></li1>
+          <li1><b><a href="Pages/inscrire.php?langue=<?php echo $langue;?>"><?php echo $tab[2]; ?></a></b></li1>
+
 
 				</ul1>
 
@@ -68,40 +69,27 @@ session_start();
 
                     <!-- Boxes -->
                         <div class="thumbnails">
+                          <?php
+                          $reponse = mysqli_query($link, "SELECT e.libelle, tc.libelle, e.description FROM TYPE_DE_CONTRAT tc INNER JOIN EMPLOI e ON tc.code = e.code ");
 
-                            <?php
-                            $reponse = mysqli_query($link, "SELECT libelle FROM emploi ");
-                            $value =  mysqli_fetch_row($reponse);
-                            $typ = $value[0];
-                              ?>
-
-                            <div class="box">
-                              <div class="inner">
-                              <h3><?php echo $value[0];?></h3>
-
-                                <!-- <img src="images/pic01.jpg" alt="" /></a> -->
-                                <?php     while ($value =  mysqli_fetch_row($reponse)) {?>
+                            ?>
 
 
-                                  <?php if ($typ != $value[0]) {
-                                    $typ = $value[0];?>
+                              <!-- <img src="images/pic01.jpg" alt="" /></a> -->
+                              <?php     while ($value =  mysqli_fetch_row($reponse)) {?>
 
-                                    </div>
-                                    <a href="Pages/postuler.php" class="button" >Postuler</a>
-                                    </div>
-                                   <div class="box">
-                                    <div class="inner">
-                                    <h3><?php echo $value[0];?></h3>
-
-
-                                <?php  } ?>
-                                  <p><?php echo $value[3];?></p>
-                                 <?php  } ?>
+                                 <div class="box">
+                                  <div class="inner">
+                                  <h3><?php echo $value[0];?></h3>
+                                  <p><?php echo $value[1];?></p>
+                                  <p><?php echo $value[2];?></p>
+                                </div>
+                                <a href="Pages/SeConnecter.php" class="button" >Postuler</a>
+                                </div>
 
 
-                               </div>
-                               <a href="Pages/postuler.php" class="button">Postuler</a>
-                               </div>
+                                <p><?php echo $value[3];?></p>
+                               <?php  } ?>
 
                         </div>
 
