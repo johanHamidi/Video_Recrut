@@ -4,7 +4,7 @@
     templated.co @templatedco
     Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
-<?php include 'connectBd.inc.php';
+<?php include '../connectBd.inc.php';
 session_start()?>
 <html>
     <head>
@@ -39,11 +39,56 @@ session_start()?>
                     </div>
                 </section>
 
+
+                <div id="main">
+
+                    <div class="inner">
+
+                    <!-- Boxes -->
+                        <div class="thumbnails">
+
+                            <?php
+                            $reponse = mysqli_query($link, "SELECT e.libelle, tc.libelle, e.description FROM TYPE_DE_CONTRAT tc INNER JOIN EMPLOI e ON tc.code = e.code ");
+
+
+
+                              ?>
+
+
+                                <!-- <img src="images/pic01.jpg" alt="" /></a> -->
+                                <?php     while ($value =  mysqli_fetch_row($reponse)) {?>
+
+
+
+
+                                   <div class="box">
+                                    <div class="inner">
+                                    <h3><?php echo $value[0];?></h3>
+                                    <p><?php echo $value[1];?></p>
+                                    <p><?php echo $value[2];?></p>
+                                  </div>
+                                  <a href="postuler.php?id=<?php echo $value[0];?>& type=<?php echo $value[1]?>& description=<?php echo $value[2]?>" class="button" >Postuler</a>
+                                  </div>
+
+
+                                  <p><?php echo $value[3];?></p>
+                                 <?php  } ?>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
             <!-- Footer -->
                 <footer id="footer">
                     <div class="inner">
                         <h2>CONTACTEZ-NOUS</h2>
                         <p>061548795  ou   videoRecrut@yep.com </p>
+
+
+
+
 
                         <ul class="icons">
                             <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
