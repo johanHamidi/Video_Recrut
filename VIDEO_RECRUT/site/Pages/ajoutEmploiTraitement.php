@@ -1,15 +1,18 @@
 <?php
 include '../connectBd.inc.php';
 
+session_start();
+
+$codeEmploi= $_POST['codeEmploi'];
 $libelleEmploi= $_POST['libelleEmploi'];
 $contrat= $_POST['typeContrat'];
 $desc= $_POST['description'];
 $comp= $_POST['competence'];
-$id= $_POST['id'];
+$id= $_SESSION['idPersonne'];
 
-$query = "INSERT INTO EMPLOIS(codeEmploi,libelle, description, type, IdPersonne, code)
-          VALUES (6,'$libelleEmploi','$desc','$contrat','$id',2)";
-$res = mysqli_query($link,$query);
+$req = mysqli_query($link,"INSERT INTO EMPLOI(codeEmploi,libelle, description, type, IdPersonne, code)
+          VALUES ('$codeEmploi','$libelleEmploi','$desc','$id','$contrat')");
+
 
 if($res){
   echo "Emploi ajouté";

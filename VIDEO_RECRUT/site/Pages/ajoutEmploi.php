@@ -1,9 +1,10 @@
-<?php  include 'connectBd.inc.php';
+<?php  include '../connectBd.inc.php';
 
-$req = mysqli_query($link,"SELECT libelle FROM TYPE_DE_CONTRAT WHERE code = 1");
+    $langue = 'francais';
+    if(isset($_GET['langue']))
+      $langue = $_GET['langue'];
+    include '../langue/'.$langue.'.php'; ?>
 
-echo $req;
-?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -14,17 +15,25 @@ echo $req;
   </head>
   <body>
     <form class="" action="ajoutEmploiTraitement.php" method="post">
-      <label for="">nom de l'emploi</label>
+      <label for="">Code emploi : </label>
+      <input type="text" name="codeEmploi" value="">
+
+      <label for=""><?php echo $tab[21]; ?> : </label>
       <input type="text" name="libelleEmploi" value="">
-      <label for=""> type de contrat</label>
-      <input type="text" name="" value="">
-      <label for="">description de l'emploi</label>
+
+      <label for=""><?php echo $tab[22]; ?> : </label>
       <input type="text" name="description" value="">
-      <label for="">compétence nécessaire</label>
+
+      <label for=""><?php echo $tab[24]; ?> : </label>
+      <input type="text" name="type" value="">
+
+      <label for=""><?php echo $tab[23]; ?> : </label>
       <input type="text" name="competence" value="">
+
       <?php $id = $_SESSION['idPersonne'] ;?>
-      <input type="hidden" name="id" value="<?php echo $id; ?>">
-      <button type="submit" name="validé">validé</button>
+      <input type="hidden" name="id" value="<?php echo $id; ?>"><br><br>
+      <button type="submit" name="validé"><?php echo $tab[15]; ?>  </button>
+      <a href="espaceClient.php?langue=<?php echo $langue;?>" class="button"><?php echo $tab[9]; ?></a></br></br>
     </form>
   </body>
 </html>

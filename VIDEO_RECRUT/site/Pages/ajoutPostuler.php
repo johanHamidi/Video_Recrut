@@ -1,4 +1,8 @@
-<?php include '../connectBd.inc.php' ?>
+<?php include '../connectBd.inc.php'
+session_start();
+$_SESSION['id'];
+
+?>
 
 
 
@@ -29,7 +33,7 @@ $taillelettreMotiv = filesize($_FILES['lettreMotiv']['tmp_name']);
 $tailleVideo = filesize($_FILES['video']['tmp_name']);
 
 
-$extensions = array('.png', '.docx', '.jpg', '.jpeg', '.pdf','.mp4');
+$extensions = array('.png', '.docx', '.jpg', '.jpeg', '.pdf',);
 
 
 $extensionCv = strrchr($_FILES['cv']['name'], '.');
@@ -138,6 +142,9 @@ else
 {
      echo $erreur;
 }
+
+
+
 
 echo '<br>Vous allez être rediriger vers votre espace client. MERCI !'
 

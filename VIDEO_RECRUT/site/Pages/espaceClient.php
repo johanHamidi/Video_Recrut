@@ -29,18 +29,20 @@ session_start()?>
       <option value="anglais">anglais</option>
     </select>
     <input type="submit" name="" value="<?php echo $tab[15]; ?>">
+      <br></br><a href="deco.php" class="button"><?php echo $tab[17]; ?></a>
   </form>
 
 
     <body id="top">
 
       <?php if($_SESSION['connect']){ ?>
+      <section id="banner" data-video="../images/banner">
         <!-- Header -->
 			<header id="header" class="alt">
-        <h3><?php echo $tab[16]; echo" ";  echo $_SESSION['prenom']." ".$_SESSION['nom'];?> </h3>
+        <h1 style="color:white;"><?php echo $tab[16]; echo" ";  echo $_SESSION['prenom']." ".$_SESSION['nom'];?> </h1>
 			</header>
 
-      <br></br><a href="deco.php" class="button"><?php echo $tab[17]; ?></a>
+    </section>
 
 
 

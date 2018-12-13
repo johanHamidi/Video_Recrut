@@ -10,8 +10,6 @@ include '../langue/'.$langue.'.php';
   $type = $_GET['type'];
   $description =  $_GET['description'];
 
-
-
 ?>
 
 <html>
@@ -31,7 +29,10 @@ include '../langue/'.$langue.'.php';
     <?php echo $type; ?>
 
     <label><h3>Description :</h3></label>
-    <?php echo $description; ?><br></br>
+    <?php echo $description; ?>
+
+    <label><h3>Competence :</h3></label>
+    <h1>JAVA, PHP, HTML</h1>
 
     <label><h3>CV :</h3></label>
     <input type="file" name="cv"><br></br>

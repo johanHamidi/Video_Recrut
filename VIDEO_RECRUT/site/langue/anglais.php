@@ -19,6 +19,12 @@ $tab = array(
   '17' => 'Sign out',
   '18' => 'Wrong login/password.Try again',
   '19' => 'Add job',
-  '20' => 'list candidate',
+  '20' => 'List candidate',
+  '21' => 'Job name',
+  '22' => 'Type of agreement ',
+  '23' => 'Job description',
+  '24' => 'Expertise required',
+  '25' => 'Job',
+  '26' => 'LIST OF CANDIDATURES'
 );
  ?>
