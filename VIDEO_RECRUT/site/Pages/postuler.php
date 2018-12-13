@@ -2,6 +2,10 @@
   include '../connectBd.inc.php';
   session_start();
 
+  if(isset($_GET['langue']))
+  $langue = $_GET['langue'];
+include '../langue/'.$langue.'.php';
+
   $id = $_GET['id'];
   $type = $_GET['type'];
   $description =  $_GET['description'];
@@ -17,7 +21,8 @@
 </head>
 <body>
   <div class="container">
-    <form>
+    <form enctype="multipart/form-data" method="post" action="ajoutPostuler.php">
+
 
     <label><h3>Métier :</h3></label>
     <?php echo $id; ?>
@@ -29,12 +34,16 @@
     <?php echo $description; ?><br></br>
 
     <label><h3>CV :</h3></label>
-    <input type="file" name="monfichier"><br></br>
+    <input type="file" name="cv"><br></br>
 
     <label><h3>Lettre de Motivation :</h3></label>
-     <input type="file" name="monfichier"><br></br>
+     <input type="file" name="lettreMotiv"><br></br>
 
-    <a href="#" class="button">Postuler pour <?php echo $id; ?></a>
+     <label><h3>VIDEO :</h3></label>
+      <input type="file" name="video"><br></br>
+
+    <input type="submit" value="<?php echo $tab[15]; ?>">
+    <a href="espaceClient.php" class="button" ><?php echo $tab[9];?></a>
 
   </form>
 </div>

@@ -18,5 +18,7 @@ $tab = array(
   '16' => 'Welcome',
   '17' => 'Sign out',
   '18' => 'Wrong login/password.Try again',
+  '19' => 'Add job',
+  '20' => 'list candidate',
 );
  ?>

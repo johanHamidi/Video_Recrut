@@ -6,6 +6,14 @@
 -->
 <?php include '../connectBd.inc.php';
 session_start()?>
+
+<?php
+    $langue = 'francais';
+    if(isset($_GET['langue']))
+      $langue = $_GET['langue'];
+    include '../langue/'.$langue.'.php'; ?>
+
+
 <html>
     <head>
         <title>video_recrut</title>
@@ -13,15 +21,44 @@ session_start()?>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="../assets/css/main.css" />
     </head>
+
+    <!--Langue-->
+    <form class="" action="" method="get">
+    <select class="" name="langue">
+      <option value="francais">francais</option>
+      <option value="anglais">anglais</option>
+    </select>
+    <input type="submit" name="" value="<?php echo $tab[15]; ?>">
+  </form>
+
+
     <body id="top">
 
-
+      <?php if($_SESSION['connect']){ ?>
         <!-- Header -->
 			<header id="header" class="alt">
-        <h3>Bienvenue <?php echo $_SESSION['nom']." ".$_SESSION['prenom'];?> </h3>
+        <h3><?php echo $tab[16]; echo" ";  echo $_SESSION['prenom']." ".$_SESSION['nom'];?> </h3>
 			</header>
 
-      <br></br><a href="deco.php" class="button">Se deconnecter</a>
+      <br></br><a href="deco.php" class="button"><?php echo $tab[17]; ?></a>
+
+
+
+                      <?php
+                        $idP = $_SESSION['id'];
+                        $req_session = mysqli_query($link,"SELECT idPersonne FROM RH WHERE idPersonne ='".$idP."'");
+                        $droit = mysqli_fetch_assoc($req_session);
+
+                        if($droit['idPersonne'] == $idP && $idP != NULL ){
+                        ?>
+                            <li1><b><a href="ajoutEmploi.php?langue=<?php echo $langue;?>"><?php echo $tab[19]; ?></a></b></li1>
+                            <li1><b><a href="liste.php?langue=<?php echo $langue;?>"><?php echo $tab[20]; ?></a></b></li1>
+
+                        <?php
+                      }
+                         ?>
+
+
 
 
             <!-- Banner -->
@@ -30,14 +67,6 @@ session_start()?>
                 its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
                 formats to work correctly.
             -->
-                <section id="banner" data-video="images/banner">
-                    <div class="inner">
-                        <header>
-                            <h1>video_recrut</h1>
-                            <p>Votre espace client</p>
-                        </header>
-                    </div>
-                </section>
 
 
                 <div id="main">
@@ -67,7 +96,7 @@ session_start()?>
                                     <p><?php echo $value[1];?></p>
                                     <p><?php echo $value[2];?></p>
                                   </div>
-                                  <a href="postuler.php?id=<?php echo $value[0];?>& type=<?php echo $value[1]?>& description=<?php echo $value[2]?>" class="button" >Postuler</a>
+                                  <a href="postuler.php?id=<?php echo $value[0];?>& type=<?php echo $value[1]?>& description=<?php echo $value[2]?> & langue=<?php echo $langue;?>" class="button" >Postuler</a>
                                   </div>
 
 
@@ -98,6 +127,9 @@ session_start()?>
                         </ul>
                     </div>
                 </footer>
+
+                <?php } ?>
+
 
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>

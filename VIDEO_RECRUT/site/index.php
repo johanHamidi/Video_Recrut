@@ -5,8 +5,8 @@
     Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
 <?php include 'connectBd.inc.php';
+include 'Pages/espaceClient.php';
 
-session_start();
 ?>
 <html>
     <head>
@@ -15,20 +15,18 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="assets/css/main.css" />
     </head>
-    <body id="top">
-      <?php
-      $langue = 'francais';
-      if(isset($_GET['langue']))
-        $langue = $_GET['langue'];
-      include 'langue/'.$langue.'.php'; ?>
 
-      <form>
-        <select class="" name="langue">
-          <option value="francais">francais</option>
-          <option value="anglais">anglais</option>
-        </select>
-        <button type="submit" name="button">Valider</button>
-      </form>
+
+        <?php
+            $langue = 'francais';
+            if(isset($_GET['langue']))
+              $langue = $_GET['langue'];
+            include 'langue/'.$langue.'.php'; ?>
+
+
+
+    <body id="top">
+
 
         <!-- Header -->
 			<header id="header" class="alt">
@@ -39,6 +37,8 @@ session_start();
 				<ul1 class="links">
           <li1><b><a href="Pages/SeConnecter.php?langue=<?php echo $langue;?>"><?php echo $tab[1]; ?></a></b></li1>
           <li1><b><a href="Pages/inscrire.php?langue=<?php echo $langue;?>"><?php echo $tab[2]; ?></a></b></li1>
+
+
 
 
 				</ul1>
@@ -56,7 +56,7 @@ session_start();
                     <div class="inner">
                         <header>
                             <h1>video_recrut</h1>
-                            <p>Consulter ci-dessous la liste d'emplois
+                            <p>Consulter ci-dessous la liste d'emplois</p>
 
                         </header>
                     </div>
@@ -84,7 +84,7 @@ session_start();
                                   <p><?php echo $value[1];?></p>
                                   <p><?php echo $value[2];?></p>
                                 </div>
-                                <a href="Pages/SeConnecter.php" class="button" >Postuler</a>
+                                <a href="Pages/SeConnecter.php?langue=<?php echo $langue?>" class="button" >Postuler</a>
                                 </div>
 
 
@@ -110,6 +110,16 @@ session_start();
                         </ul>
                     </div>
                 </footer>
+
+
+                <!--Langue-->
+              <form class="" action="" method="get">
+              <select class="" name="langue">
+                <option value="francais">francais</option>
+                <option value="anglais">anglais</option>
+              </select>
+              <input type="submit" value="OK" >
+            </form>
 
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
