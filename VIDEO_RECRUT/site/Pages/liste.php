@@ -1,22 +1,45 @@
+<?php
+    $langue = 'francais';
+    if(isset($_GET['langue']))
+      $langue = $_GET['langue'];
+    include '../langue/'.$langue.'.php'; ?>
+
+
 <html>
     <head>
         <title>video_recrut</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="../assets/css/main.css" />
     </head>
     <body id="top">
+
+        <h2><?php echo $tab[26]; ?></h2>
 <?php
 include '../connectBd.inc.php';
-
-
-$query = "SELECT c.cv, lettreMotiv,date,video,e.libelle, ca.nom, ca.prenom from emploi e INNER JOIN candidature c on e.codeEmploi = c.codeEmploi INNER join candidat ca on ca.IdPersonne = c.IdPersonne";
+$query = "SELECT e.libelle, ca.nom, ca.prenom from emploi e INNER JOIN candidature c on e.codeEmploi = c.codeEmploi INNER join candidat ca on ca.IdPersonne = c.IdPersonne";
 $reponse = mysqli_query($link,$query);
 while ($value =  mysqli_fetch_row($reponse)) {
   ?>
-  <div class="box">
-   <div class="inner">
+
+
+<table>
+  <tr>
+    <th><?php echo $tab[25] ;?></th>
+    <th><?php echo $tab[12] ;?></th>
+    <th><?php echo $tab[13] ;?></th>
+  </tr>
+  <tr>
+    <td><?php echo $value[0]; ?></td>
+    <td><?php echo $value[1]; ?></td>
+    <td><?php echo $value[2]; ?></td>
+  </tr>
+
+
+</table>
+
   <?php
+<<<<<<< HEAD
   echo $value[0];
   echo $value[1];
   echo $value[2];
@@ -24,13 +47,20 @@ while ($value =  mysqli_fetch_row($reponse)) {
   echo $value[4];
   echo $value[5];
   echo $value[6];
+=======
+>>>>>>> 52262d61357c1e313b506e317a73041dd9f99dac
 
 }
-
  ?>
+<<<<<<< HEAD
     </div>
   </div>
   <br>
+=======
+
+ <a href="espaceClient.php" class="button" ><?php echo $tab[9];?></a>
+
+>>>>>>> 52262d61357c1e313b506e317a73041dd9f99dac
 </body>
   <footer id="footer">
       <div class="inner">

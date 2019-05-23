@@ -6,6 +6,7 @@
 -->
 <?php include 'connectBd.inc.php';
 include 'Pages/espaceClient.php';
+
 ?>
 <html>
     <head>
@@ -14,6 +15,16 @@ include 'Pages/espaceClient.php';
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="assets/css/main.css" />
     </head>
+
+
+        <?php
+            $langue = 'francais';
+            if(isset($_GET['langue']))
+              $langue = $_GET['langue'];
+            include 'langue/'.$langue.'.php'; ?>
+
+
+
     <body id="top">
 
 
@@ -24,6 +35,7 @@ include 'Pages/espaceClient.php';
 		<!-- Nav -->
 			<nav id="menu">
 				<ul1 class="links">
+<<<<<<< HEAD
           <li1><b><a href="Pages/SeConnecter.php?langue=<?php echo $langue;?>"><?php echo $date = date('d-m-Y'); ?></a></b></li1>
 					<li1><b><a href="Pages/SeConnecter.php?langue=<?php echo $langue;?>"><?php echo $tab[1]; ?></a></b></li1>
 					<li1><b><a href="Pages/inscrire.php?langue=<?php echo $langue;?>"><?php echo $tab[2]; ?></a></b></li1>
@@ -40,8 +52,16 @@ include 'Pages/espaceClient.php';
           <?php
         }
            ?>
+=======
+          <li1><b><a href="Pages/SeConnecter.php?langue=<?php echo $langue;?>"><?php echo $tab[1]; ?></a></b></li1>
+          <li1><b><a href="Pages/inscrire.php?langue=<?php echo $langue;?>"><?php echo $tab[2]; ?></a></b></li1>
+
+
+
+>>>>>>> 52262d61357c1e313b506e317a73041dd9f99dac
 
 				</ul1>
+
 			</nav>
 
 
@@ -55,7 +75,8 @@ include 'Pages/espaceClient.php';
                     <div class="inner">
                         <header>
                             <h1>video_recrut</h1>
-                            <p><?php echo $tab[3]; ?>
+                            <p>Consulter ci-dessous la liste d'emplois</p>
+
                         </header>
                     </div>
                 </section>
@@ -67,49 +88,27 @@ include 'Pages/espaceClient.php';
 
                     <!-- Boxes -->
                         <div class="thumbnails">
+                          <?php
+                          $reponse = mysqli_query($link, "SELECT e.libelle, tc.libelle, e.description FROM TYPE_DE_CONTRAT tc INNER JOIN EMPLOI e ON tc.code = e.code ");
 
-                            <?php
-                            $reponse = mysqli_query($link, "SELECT e.libelle,c.libelle FROM emploi e INNER JOIN type_de_contrat c ON e.code = c.code  ");
-                            $value =  mysqli_fetch_row($reponse);
-                            $typ = $value[0];
-                              ?>
-
-                            <div class="box">
-                              <div class="inner">
-                              <h3><?php echo $value[0];?></h3>
-                              <h5><?php echo $value[1]; ?></h5>
-
-                                <!-- <img src="images/pic01.jpg" alt="" /></a> -->
-                                <?php     while ($value =  mysqli_fetch_row($reponse)) {?>
+                            ?>
 
 
-                                  <?php if ($typ != $value[0]) {
-                                    $typ = $value[0];?>
+                              <!-- <img src="images/pic01.jpg" alt="" /></a> -->
+                              <?php     while ($value =  mysqli_fetch_row($reponse)) {?>
 
-                                    </div>
-
-                                    <a href=""  ></a>
-
-                                    <a href="Pages/postuler.php?langue=<?php echo $langue;?>" class="button" ><?php echo $tab[4]; ?></a>
-
-                                    </div>
-                                   <div class="box">
-                                    <div class="inner">
-                                    <h3><?php echo $value[0];?></h3>
-                                    <h5><?php echo $value[1]; ?></h5>
+                                 <div class="box">
+                                  <div class="inner">
+                                  <h3><?php echo $value[0];?></h3>
+                                  <p><?php echo $value[1];?></p>
+                                  <p><?php echo $value[2];?></p>
+                                </div>
+                                <a href="Pages/SeConnecter.php?langue=<?php echo $langue?>" class="button" >Postuler</a>
+                                </div>
 
 
-
-                                <?php  } ?>
-                                 <?php  } ?>
-
-
-                               </div>
-
-                               <a href=""  ></a>
-
-                               <a href="Pages/postuler.php?langue=<?php echo $langue;?>" class="button"><?php echo $tab[4]; ?></a>
-                               </div>
+                                <p><?php echo $value[3];?></p>
+                               <?php  } ?>
 
                         </div>
 
@@ -119,8 +118,8 @@ include 'Pages/espaceClient.php';
             <!-- Footer -->
                 <footer id="footer">
                     <div class="inner">
-                        <h2><?php echo $tab[5]; ?></h2>
-                        <p>0615487952  ou   videoRecrut@yep.com </p>
+                        <h2>CONTACTEZ-NOUS</h2>
+                        <p>061548795  ou   videoRecrut@yep.com </p>
 
                         <ul class="icons">
                             <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
@@ -130,6 +129,16 @@ include 'Pages/espaceClient.php';
                         </ul>
                     </div>
                 </footer>
+
+
+                <!--Langue-->
+              <form class="" action="" method="get">
+              <select class="" name="langue">
+                <option value="francais">francais</option>
+                <option value="anglais">anglais</option>
+              </select>
+              <input type="submit" value="OK" >
+            </form>
 
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>

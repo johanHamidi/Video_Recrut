@@ -24,7 +24,7 @@ if(isset($_POST) && !empty($_POST['log']) && !empty($_POST['pas'])) {
     $_SESSION['id'] = $data['idPersonne'];
     $_SESSION['connect'] = 'ok';
 
-    header('location: ../index.php');
+    header('location: espaceClient.php');
   }
 }
 ?>
