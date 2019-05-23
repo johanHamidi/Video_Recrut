@@ -23,13 +23,14 @@ while ($value =  mysqli_fetch_row($reponse)) {
   echo $value[3];
   echo $value[4];
   echo $value[5];
-  echo $value[5];
+  echo $value[6];
 
 }
 
  ?>
     </div>
   </div>
+  <br>
 </body>
   <footer id="footer">
       <div class="inner">

@@ -24,6 +24,7 @@ include 'Pages/espaceClient.php';
 		<!-- Nav -->
 			<nav id="menu">
 				<ul1 class="links">
+          <li1><b><a href="Pages/SeConnecter.php?langue=<?php echo $langue;?>"><?php echo $date = date('d-m-Y'); ?></a></b></li1>
 					<li1><b><a href="Pages/SeConnecter.php?langue=<?php echo $langue;?>"><?php echo $tab[1]; ?></a></b></li1>
 					<li1><b><a href="Pages/inscrire.php?langue=<?php echo $langue;?>"><?php echo $tab[2]; ?></a></b></li1>
           <?php
