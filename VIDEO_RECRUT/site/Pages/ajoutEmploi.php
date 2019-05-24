@@ -26,6 +26,17 @@ session_start();
     <a href="../index.php?langue=<?php echo $langue;?>" class="button"><?php echo $tab[9]; ?></a>
 
   </form>
+  <?php
+    $query = "SELECT libelle from type_de_contrat";
+    $rep = mysqli_query($link,$query);
+    while($val = mysqli_fetch_row($rep)){
+      $val['0']?>
+      <br>
+      <?php
+    }
+
+       ?>
+
 
 </body>
 </html>

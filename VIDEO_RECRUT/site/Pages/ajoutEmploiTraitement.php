@@ -11,7 +11,7 @@ $comp = $_POST['competence'] ;
  $val = mysqli_fetch_assoc($value);
  $code = $val["code"];
  $query = "INSERT INTO emploi(codeEmploi,libelle,description,type,idPersonne,code)
-           VALUES ('6','$libelleEmploi','$desc','a',$id,'$code')";
+           VALUES ('10','$libelleEmploi','$desc','a',$id,'$code')";
 $res = mysqli_query($link,$query);
 if($res){
   echo "ajout realiser";
