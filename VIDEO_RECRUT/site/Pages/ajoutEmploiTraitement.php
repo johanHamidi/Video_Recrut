@@ -1,5 +1,6 @@
 <?php
 include '../connectBd.inc.php';
+
 session_start();
  $libelleEmploi = $_POST['libelleEmploi'];
  $contrat = $_POST['typeContrat'];
@@ -13,11 +14,21 @@ $comp = $_POST['competence'] ;
  $query = "INSERT INTO emploi(codeEmploi,libelle,description,type,idPersonne,code)
            VALUES ('10','$libelleEmploi','$desc','a',$id,'$code')";
 $res = mysqli_query($link,$query);
-if($res){
-  echo "ajout realiser";
-
+if($res) {
+    echo "ajout realiser";
+    $codeEmploi = $_POST['codeEmploi'];
+    $libelleEmploi = $_POST['libelleEmploi'];
+    $contrat = $_POST['typeContrat'];
+    $desc = $_POST['description'];
+    $comp = $_POST['competence'];
+    $id = $_SESSION['idPersonne'];
 }
-else {
-   echo "echec vous n'avez pas les droit";
-} ?>
-<br></br><a href="../index.php" class="button">Retour</a>
+$req = mysqli_query($link,"INSERT INTO EMPLOI(codeEmploi,libelle, description, type, IdPersonne, code)
+          VALUES ('$codeEmploi','$libelleEmploi','$desc','$id','$contrat')");
+
+
+if($res){
+  echo "Emploi ajouté";
+}else {
+  echo "echoué";
+}
